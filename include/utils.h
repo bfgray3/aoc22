@@ -5,7 +5,6 @@
 #include <string>
 #include <vector>
 
-// TODO: can use string_view?
 // TODO: can use braced initialization?
 
 template <typename T>
@@ -24,8 +23,8 @@ void write_vector_to_file(const std::vector<T> &v,
 }
 
 template <typename T> std::vector<T> read_vector_from_stdin() {
-  std::istream_iterator<T> iterBegin(std::cin), iterEnd;
-  return {iterBegin, iterEnd};
+  std::istream_iterator<T> start(std::cin), end;
+  return {start, end};
 }
 
 template <typename T> void write_vector_to_stdout(const std::vector<T> &v) {
