@@ -10,4 +10,3 @@ repos:
     -   id: clang-format
     -   id: clang-tidy
     -   id: cppcheck
-    -   id: include-what-you-use
