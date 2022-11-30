@@ -8,5 +8,8 @@ repos:
     rev: v1.3.5
     hooks:
     -   id: clang-format
-    -   id: clang-tidy
+        args: [-style=llvm]
+#    -   id: clang-tidy
     -   id: cppcheck
+        args: [--language=c++]
+#    -   id: include-what-you-use
