@@ -8,4 +8,4 @@ main:
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -o $@ $(wildcard $(day)/*.cpp)
 
 clean:
-	rm -f main 
+	rm -f main
