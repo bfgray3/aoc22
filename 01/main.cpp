@@ -5,8 +5,9 @@
 
 int main() {
   std::size_t max_elf_cals{}, current_elf_cals{}, cal_num;
-  std::ifstream input_file_stream{"input.txt"};
+  std::ifstream input_file_stream{"01/input.txt"};
   std::string cal;
+  std::stringstream cal_stream;
 
   while (std::getline(input_file_stream, cal)) {
     if (cal == "") {
@@ -15,8 +16,9 @@ int main() {
       }
       current_elf_cals = 0;
     } else {
-      std::stringstream cal_stream{cal};
+      cal_stream << cal;
       cal_stream >> cal_num;
+      cal_stream.clear();
       current_elf_cals += cal_num;
     }
   }
