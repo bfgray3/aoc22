@@ -1,10 +1,25 @@
-#include "utils.h"
-
-// test with  make clean && make day=01 && ./main <<< "1 2 3"
+#include <fstream>
+#include <iostream>
+#include <sstream>
+#include <string>
 
 int main() {
-  auto v2 = utils::read_vector_from_stdin<int>();
-  utils::write_vector_to_file(v2, "asdf");
-  auto v3 = utils::read_vector_from_file<int>("asdf");
-  utils::write_vector_to_stdout(v3);
+  std::size_t max_elf_cals{}, current_elf_cals{}, cal_num;
+  std::ifstream input_file_stream{"input.txt"};
+  std::string cal;
+
+  while (std::getline(input_file_stream, cal)) {
+    if (cal == "") {
+      if (current_elf_cals > max_elf_cals) {
+        max_elf_cals = current_elf_cals;
+      }
+      current_elf_cals = 0;
+    } else {
+      std::stringstream cal_stream{cal};
+      cal_stream >> cal_num;
+      current_elf_cals += cal_num;
+    }
+  }
+
+  std::cout << max_elf_cals << '\n';
 }
