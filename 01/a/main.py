@@ -1,5 +1,5 @@
 with open("input.txt") as f:
-    cals = [l.strip() for l in f]
+    cals = [line.strip() for line in f]
 
 max_elf_cals = current_elf_cals = 0
 
