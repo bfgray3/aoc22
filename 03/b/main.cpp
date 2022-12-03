@@ -11,14 +11,13 @@
 
 using char_set = std::set<char>;
 
-static constexpr std::size_t group_size{3};
-static constexpr char num_letters{26}, upper_start{65}, upper_end{upper_start + num_letters - 1}, lower_start{97}, lower_end{lower_start + num_letters - 1};
+static constexpr std::size_t GROUP_SIZE{3};
 
 char priority(const char c) {
-  if (c >= lower_start && c <= lower_end) {
-    return c - lower_start + 1;
-  } else if (c >= upper_start && c <= upper_end) {
-    return c - upper_start + 1 + num_letters;
+  if (c >= 'a' && c <= 'z') {
+    return c - 'a' + 1;
+  } else if (c >= 'A' && c <= 'Z') {
+    return c - 2 * 'A' + 'Z' + 2;
   } else {
     throw "bad input";
   }
@@ -41,7 +40,7 @@ int main() {
   std::size_t group_index{};
 
   for (std::size_t group_index{}; ; ++group_index) {
-    if (group_index && !(group_index % group_size)) {
+    if (group_index && !(group_index % GROUP_SIZE)) {
       std::vector<char_set> group_item_sets;
       std::transform(
         group_rucksacks.cbegin(),
