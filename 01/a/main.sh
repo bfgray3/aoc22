@@ -1,8 +1,10 @@
+#!/usr/bin/env bash
+
 max_elf_cals=0
 current_elf_cals=0
 
 
-while read cal
+while read -r cal
 do
   if [[ -z $cal ]]
   then

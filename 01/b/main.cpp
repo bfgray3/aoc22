@@ -13,9 +13,7 @@ int main() {
   std::ifstream input_file_stream{"01/input.txt"};
   std::string cal;
   std::stringstream cal_stream;
-  std::priority_queue<std::size_t, std::vector<std::size_t>,
-                      std::greater<std::size_t>>
-      topn;
+  std::priority_queue<std::size_t, std::vector<std::size_t>, std::greater<std::size_t>> topn;
 
   while (std::getline(input_file_stream, cal)) {
     if (cal == "") {
