@@ -10,7 +10,7 @@
 
 static constexpr char num_letters{26}, upper_start{65}, upper_end{upper_start + num_letters - 1}, lower_start{97}, lower_end{lower_start + num_letters - 1};
 
-char priority(const char& c) {
+char priority(const char c) {
   if (c >= lower_start && c <= lower_end) {
     return c - lower_start + 1;
   } else if (c >= upper_start && c <= upper_end) {
