@@ -34,10 +34,9 @@ char_set intersect(const char_set& s1, const char_set& s2) {
 }
 
 int main() {
-  auto rucksacks = utils::read_vector_from_file<std::string>("input.txt");
+  const auto rucksacks = utils::read_vector_from_file<std::string>("input.txt");
   std::vector<char> priorities;
   std::vector<std::string> group_rucksacks;
-  std::size_t group_index{};
 
   for (std::size_t group_index{}; ; ++group_index) {
     if (group_index && !(group_index % GROUP_SIZE)) {
