@@ -33,9 +33,7 @@ range_pair parse_ranges(std::string_view s) {
 bool range_overlapped(const range_pair& rp) {
   const auto& [a, b] = rp;
   return a.first <= b.second && a.second >= b.first
-    || b.first <= a.second && b.second >= a.first
-    || a.first >= b.first && a.second <= b.second
-    || b.first >= a.first && b.second <= a.second;
+    || b.first <= a.second && b.second >= a.first;
 }
 
 int main() {
