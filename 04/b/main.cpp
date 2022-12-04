@@ -1,7 +1,7 @@
+#include <charconv>
 #include <cstddef>
 #include <iostream>
 #include <ranges>
-#include <sstream>
 #include <string>
 #include <string_view>
 #include <utility>
@@ -14,13 +14,9 @@ using range_pair = std::pair<range, range>;
 range parse_range(std::string_view s) {
   const auto dash_pos = s.find("-");
   const std::string start_s{s.substr(0, dash_pos)}, end_s{s.substr(dash_pos + 1)};
-  std::size_t start, end;
-  std::stringstream stream;
-  stream << start_s;
-  stream >> start;
-  stream.clear();
-  stream << end_s;
-  stream >> end;
+  std::size_t start{}, end{};
+  std::from_chars(start_s.data(), start_s.data() + start_s.size(), start);
+  std::from_chars(end_s.data(), end_s.data() + end_s.size(), end);
   return {start, end};
 }
 
