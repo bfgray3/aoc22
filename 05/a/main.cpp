@@ -2,16 +2,18 @@
 #include <cstddef>
 #include <fstream>
 #include <iostream>
+#include <ranges>
 #include <regex>
 #include <stack>
 #include <string>
 #include <vector>
 
 int main() {
-  std::size_t num_stacks;
+  std::size_t num_stacks, count, from, to;
   std::ifstream input_file_stream{"input.txt"};
   std::string row;
   std::vector<std::string> stack_rows, move_rows;
+  const std::regex re{"^move ([0-9]+) from ([0-9]+) to ([0-9]+)$"};
 
   while (std::getline(input_file_stream, row)) {
     if (row.empty()) {
@@ -24,14 +26,12 @@ int main() {
     move_rows.push_back(row);
   }
 
-  std::string bottom_row = stack_rows.cend()[-2];
+  const auto bottom_row = stack_rows.cend()[-2]; // TODO: should this be a reference?
   num_stacks = std::count(bottom_row.cbegin(), bottom_row.cend(), '[');
+  const auto raw_row_length{stack_rows.front().length()};
 
   std::vector<std::stack<char>> stacks(num_stacks);
-
   std::vector<std::vector<char>> parsed_rows(stack_rows.size() - 1);
-
-  auto raw_row_length{stack_rows.front().length()};
 
   for (std::size_t i{}; i < parsed_rows.size(); ++i) {
     for (std::size_t j{1}; j < raw_row_length; j += 4) {
@@ -39,17 +39,14 @@ int main() {
     }
   }
 
-  for (std::size_t row{parsed_rows.size()}; row-- > 0;) {
+  for (auto& row: std::ranges::views::reverse(parsed_rows)) {
     for (std::size_t column{}; column < num_stacks; ++column) {
-      const auto& c = parsed_rows.at(row).at(column);
+      const auto& c = row.at(column);
       if (c != ' ') {
         stacks.at(column).push(c);
       }
     }
   }
-
-  std::size_t count, from, to;
-  const std::regex re{"move ([0-9]+) from ([0-9]+) to ([0-9]+)"};
 
   for (const auto& move: move_rows) {
     std::smatch m;
