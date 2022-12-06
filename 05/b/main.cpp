@@ -6,6 +6,7 @@
 #include <ranges>
 #include <regex>
 #include <string>
+#include <utility>
 #include <vector>
 
 int main() {
@@ -26,8 +27,8 @@ int main() {
     move_rows.push_back(row);
   }
 
-  const auto& bottom_row = stack_rows.cend()[-2];
-  const std::size_t num_stacks = std::count(std::cbegin(bottom_row), std::cend(bottom_row), '[');
+  const auto& bottom_row{*(stack_rows.cend() - 2)};
+  const auto num_stacks{std::count(std::cbegin(bottom_row), std::cend(bottom_row), '[')};
   const auto raw_row_length{stack_rows.front().length()};
 
   std::vector<std::vector<char>> stacks(num_stacks);
@@ -39,9 +40,9 @@ int main() {
     }
   }
 
-  for (auto& row: std::ranges::views::reverse(parsed_rows)) {
-    for (std::size_t column{}; column < num_stacks; ++column) {
-      const auto& c = row.at(column);
+  for (const auto& r: std::ranges::views::reverse(parsed_rows)) {
+    for (std::size_t column{}; std::cmp_less(column, num_stacks); ++column) {
+      const auto& c = r.at(column);
       if (c != ' ') {
         stacks.at(column).push_back(c);
       }
