@@ -26,7 +26,7 @@ int main() {
     move_rows.push_back(row);
   }
 
-  const auto bottom_row = stack_rows.cend()[-2]; // TODO: should this be a reference?
+  const auto& bottom_row = stack_rows.cend()[-2];
   const std::size_t num_stacks = std::count(std::cbegin(bottom_row), std::cend(bottom_row), '[');
   const auto raw_row_length{stack_rows.front().length()};
 
