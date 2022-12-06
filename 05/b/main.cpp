@@ -9,9 +9,9 @@
 #include <utility>
 #include <vector>
 
-int main() {
-  std::size_t count, from, to;
-  std::ifstream input_file_stream{"input.txt"};
+int main(const int, const char** argv) {
+  std::size_t count{}, from{}, to{};
+  std::ifstream input_file_stream{argv[1]};
   std::string row;
   std::vector<std::string> stack_rows, move_rows;
   const std::regex re{"^move ([0-9]+) from ([0-9]+) to ([0-9]+)$"};
