@@ -3,6 +3,6 @@
 to run day 1, for example, run:
 
 ```bash
-make day=01
-./main
+make clean
+make day=01 part=b
 ```

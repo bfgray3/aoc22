@@ -5,7 +5,7 @@ CPPFLAGS = -I./include
 CXX = g++
 
 main:
-	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -o $@ $(wildcard $(day)/*.cpp)
-
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -o $@ $(wildcard $(day)/$(part)/*.cpp)
+	./main $(day)/$(part)/input.txt
 clean:
 	rm -f main *.out
