@@ -18,8 +18,8 @@ char priority(const char c) {
   }
 }
 
-int main() {
-  const auto rucksacks = utils::read_vector_from_file<std::string>("input.txt");
+int main(const int, const char** argv) {
+  const auto rucksacks = utils::read_vector_from_file<std::string>(argv[1]);
 
   std::vector<char> priorities;
 

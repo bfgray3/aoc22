@@ -4,9 +4,9 @@
 #include <iostream>
 #include <string>
 
-int main() {
+int main(const int, const char** argv) {
   std::size_t max_elf_cals{}, current_elf_cals{}, cal_num{};
-  std::ifstream input_file_stream{"01/input.txt"};
+  std::ifstream input_file_stream{argv[1]};
   std::string cal;
 
   while (std::getline(input_file_stream, cal)) {

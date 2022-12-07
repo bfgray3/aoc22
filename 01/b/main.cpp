@@ -8,9 +8,9 @@
 
 static constexpr std::size_t NUM_TOP_ELVES{3};
 
-int main() {
+int main(const int, const char** argv) {
   std::size_t current_elf_cals{}, cal_num{}, tot{};
-  std::ifstream input_file_stream{"01/input.txt"};
+  std::ifstream input_file_stream{argv[1]};
   std::string cal;
   std::priority_queue<std::size_t, std::vector<std::size_t>, std::greater<std::size_t>> topn;
 

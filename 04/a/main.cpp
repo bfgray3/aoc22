@@ -31,8 +31,8 @@ bool range_contained(const range_pair& rp) {
   return (a.first >= b.first && a.second <= b.second) || (b.first >= a.first && b.second <= a.second);
 }
 
-int main() {
-  const auto data = utils::read_vector_from_file<std::string>("input.txt");
+int main(const int, const char** argv) {
+  const auto data = utils::read_vector_from_file<std::string>(argv[1]);
   const auto overlap_count = std::ranges::distance(data | std::views::transform(parse_ranges) | std::views::filter(range_contained));
   std::cout << overlap_count << '\n';
 }
