@@ -16,6 +16,6 @@ do
   else
     ((current_elf_cals+=cal))
   fi
-done < input.txt
+done < ../input.txt
 
 echo $max_elf_cals

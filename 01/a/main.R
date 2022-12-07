@@ -1,4 +1,4 @@
-cals <- readLines("input.txt")
+cals <- readLines("../input.txt")
 
 max_elf_cals <- current_elf_cals <- 0L
 
@@ -13,4 +13,4 @@ for (cal in cals) {
   }
 }
 
-print(max_elf_cals)
+cat(max_elf_cals, "\n")

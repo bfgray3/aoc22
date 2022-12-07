@@ -2,6 +2,8 @@
 
 set -eu
 
+make -s clean
+
 for d in [0-9]*
 do
   for p in a b

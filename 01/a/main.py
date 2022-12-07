@@ -1,4 +1,4 @@
-with open("input.txt") as f:
+with open("../input.txt") as f:
     cals = [line.strip() for line in f]
 
 max_elf_cals = current_elf_cals = 0
