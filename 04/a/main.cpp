@@ -28,7 +28,7 @@ range_pair parse_ranges(std::string_view s) {
 
 bool range_contained(const range_pair& rp) {
   const auto& [a, b] = rp;
-  return a.first >= b.first && a.second <= b.second || b.first >= a.first && b.second <= a.second;
+  return (a.first >= b.first && a.second <= b.second) || (b.first >= a.first && b.second <= a.second);
 }
 
 int main() {
