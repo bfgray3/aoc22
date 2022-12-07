@@ -24,16 +24,16 @@ int main() {
   std::vector<char> priorities;
 
   for (const auto& r: rucksacks) {
-    const auto cutoff = r.cbegin() + r.size() / 2;
-    std::set<char> c1{r.cbegin(), cutoff}, c2{cutoff, r.cend()}, c_intersection;
+    const auto cutoff = std::cbegin(r) + r.size() / 2;
+    std::set<char> c1{std::cbegin(r), cutoff}, c2{cutoff, std::cend(r)}, c_intersection;
 
     std::set_intersection(
-      c1.cbegin(), c1.cend(),
-      c2.cbegin(), c2.cend(),
-      std::inserter(c_intersection, c_intersection.begin())
+      std::cbegin(c1), std::cend(c1),
+      std::cbegin(c2), std::cend(c2),
+      std::inserter(c_intersection, std::begin(c_intersection))
     );
 
-    priorities.push_back(priority(*c_intersection.cbegin()));
+    priorities.push_back(priority(*std::cbegin(c_intersection)));
   }
-  std::cout << std::accumulate(priorities.cbegin(), priorities.cend(), 0) << '\n';
+  std::cout << std::accumulate(std::cbegin(priorities), std::cend(priorities), 0) << '\n';
 }

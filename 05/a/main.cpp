@@ -26,7 +26,7 @@ int main(const int, const char** argv) {
     move_rows.push_back(row);
   }
 
-  const auto& bottom_row{*(stack_rows.cend() - 2)};
+  const auto& bottom_row{*(std::cend(stack_rows) - 2)};
   const auto num_stacks{std::count(std::cbegin(bottom_row), std::cend(bottom_row), '[')};
   const auto raw_row_length{stack_rows.front().length()};
 

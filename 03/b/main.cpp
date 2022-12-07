@@ -26,9 +26,9 @@ char priority(const char c) {
 char_set intersect(const char_set& s1, const char_set& s2) {
   char_set intersect;
   std::set_intersection(
-    s1.cbegin(), s1.cend(),
-    s2.cbegin(), s2.cend(),
-    std::inserter(intersect, intersect.begin())
+    std::cbegin(s1), std::cend(s1),
+    std::cbegin(s2), std::cend(s2),
+    std::inserter(intersect, std::begin(intersect))
   );
   return intersect;
 }
@@ -42,18 +42,18 @@ int main() {
     if (group_index && !(group_index % GROUP_SIZE)) {
       std::vector<char_set> group_item_sets;
       std::transform(
-        group_rucksacks.cbegin(),
-        group_rucksacks.cend(),
+        std::cbegin(group_rucksacks),
+        std::cend(group_rucksacks),
         std::back_inserter(group_item_sets),
-        [](const std::string& s) {return char_set{s.cbegin(), s.cend()};}
+        [](const std::string& s) {return char_set{std::cbegin(s), std::cend(s)};}
       );
       char_set common_items = std::reduce(
-        group_item_sets.cbegin() + 1,
-        group_item_sets.cend(),
-        *group_item_sets.cbegin(),
+        std::cbegin(group_item_sets) + 1,
+        std::cend(group_item_sets),
+        *std::cbegin(group_item_sets),
         intersect
       );
-      priorities.push_back(priority(*common_items.cbegin()));
+      priorities.push_back(priority(*std::cbegin(common_items)));
       group_rucksacks.clear();
     }
     if (group_index == rucksacks.size()) {
@@ -61,5 +61,5 @@ int main() {
     }
     group_rucksacks.emplace_back(rucksacks.at(group_index));
   }
-  std::cout << std::accumulate(priorities.cbegin(), priorities.cend(), 0) << '\n';
+  std::cout << std::accumulate(std::cbegin(priorities), std::cend(priorities), 0) << '\n';
 }
