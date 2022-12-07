@@ -6,8 +6,8 @@ CXX = g++
 SUBDIR = $(day)/$(part)
 
 
-$(SUBDIR)/main:
+$(SUBDIR)/aocmain:
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -o $@ $(wildcard $(SUBDIR)/*.cpp)
-	./$(SUBDIR)/main $(day)/input.txt
+	@ $(day)/input.txt
 clean:
 	rm -f main *.out
