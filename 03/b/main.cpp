@@ -34,7 +34,7 @@ char_set intersect(const char_set& s1, const char_set& s2) {
 }
 
 int main(const int, const char** argv) {
-  const auto rucksacks = utils::read_vector_from_file<std::string>(argv[1]);
+  const auto rucksacks{utils::read_vector_from_file<std::string>(argv[1])};
   std::vector<char> priorities;
   std::vector<std::string> group_rucksacks;
 
@@ -47,12 +47,12 @@ int main(const int, const char** argv) {
         std::back_inserter(group_item_sets),
         [](const std::string& s) {return char_set{std::cbegin(s), std::cend(s)};}
       );
-      char_set common_items = std::reduce(
+      char_set common_items{std::reduce(
         std::cbegin(group_item_sets) + 1,
         std::cend(group_item_sets),
         *std::cbegin(group_item_sets),
         intersect
-      );
+      )};
       priorities.push_back(priority(*std::cbegin(common_items)));
       group_rucksacks.clear();
     }

@@ -10,7 +10,7 @@ int main(const int, const char** argv) {
   std::string cal;
 
   while (std::getline(input_file_stream, cal)) {
-    if (cal == "") {
+    if (cal.empty()) {
       if (current_elf_cals > max_elf_cals) {
         max_elf_cals = current_elf_cals;
       }

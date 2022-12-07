@@ -15,7 +15,7 @@ int main(const int, const char** argv) {
   std::priority_queue<std::size_t, std::vector<std::size_t>, std::greater<std::size_t>> topn;
 
   while (std::getline(input_file_stream, cal)) {
-    if (cal == "") {
+    if (cal.empty()) {
       if (topn.size() < NUM_TOP_ELVES) {
         topn.push(current_elf_cals);
       } else if (topn.top() < current_elf_cals) {

@@ -41,7 +41,7 @@ int main(const int, const char** argv) {
 
   for (auto& r: std::ranges::views::reverse(parsed_rows)) {
     for (std::size_t column{}; std::cmp_less(column, num_stacks); ++column) {
-      const auto& c = r.at(column);
+      const auto& c{r.at(column)};
       if (c != ' ') {
         stacks.at(column).push(c);
       }
