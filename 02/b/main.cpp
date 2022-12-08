@@ -4,6 +4,8 @@
 #include <string>
 #include <unordered_map>
 
+static const std::size_t WIN{6}, TIE{3}, LOSS{};
+
 char parse_opponent_move(const char c) {
   switch (c) {
     case 'A':
@@ -17,14 +19,14 @@ char parse_opponent_move(const char c) {
   }
 }
 
-char parse_my_move(const char c) {
+std::size_t parse_outcome(const char c) {
   switch (c) {
     case 'X':
-      return 'R';
+      return LOSS;
     case 'Y':
-      return 'P';
+      return TIE;
     case 'Z':
-      return 'S';
+      return WIN;
     default:
       throw "bad input";
   }
@@ -42,24 +44,35 @@ static const std::unordered_map<char, std::size_t> score_table{
   {'S', 3}
 };
 
-static const std::size_t WIN{6}, TIE{3}, LOSS{};
-
 int main(const int, const char** argv) {
   std::ifstream input_file_stream{argv[1]};
   std::string row;
   std::size_t score{};
 
   while (std::getline(input_file_stream, row)) {
-    const auto my_move{parse_my_move(row.back())};
+    const auto outcome{parse_outcome(row.back())};
     const auto opponent_move{parse_opponent_move(row.front())};
 
-    score += score_table.at(my_move);
+    score += outcome;
+    std::size_t remaining_points{6}, my_move_score{};
 
-    if (my_move == opponent_move) {
-      score += TIE;
+    my_move_score = score_table.at(opponent_move);
+    if (outcome == TIE) {
+      score += my_move_score;
+      continue;
     } else {
-      score += winning.at(my_move) == opponent_move ? WIN : LOSS;
+      remaining_points -= my_move_score;
     }
+
+    my_move_score = score_table.at(winning.at(opponent_move));
+    if (outcome == LOSS) {
+      score += my_move_score;
+      continue;
+    } else {
+      remaining_points -= my_move_score;
+    }
+
+    score += remaining_points;
   }
   std::cout << score << '\n';
 }
