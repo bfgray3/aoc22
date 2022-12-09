@@ -35,5 +35,5 @@ int main(const int, const char** argv) {
 
     priorities.push_back(priority(*std::cbegin(c_intersection)));
   }
-  std::cout << std::accumulate(std::cbegin(priorities), std::cend(priorities), 0) << '\n';
+  std::cout << std::accumulate(std::cbegin(priorities), std::cend(priorities), 0u) << '\n';
 }

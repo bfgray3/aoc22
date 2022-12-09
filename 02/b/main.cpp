@@ -1,6 +1,7 @@
 #include <cstddef>
 #include <fstream>
 #include <iostream>
+#include <numeric>
 #include <string>
 #include <unordered_map>
 
@@ -54,7 +55,14 @@ int main(const int, const char** argv) {
     const auto opponent_move{parse_opponent_move(row.front())};
 
     score += outcome;
-    std::size_t remaining_points{6}, my_move_score{};
+    std::size_t my_move_score{};
+    std::size_t remaining_points{
+      std::accumulate(
+        std::cbegin(score_table),
+        std::cend(score_table),
+        0u,
+        [](const auto sum, const auto& pair) {return sum + pair.second;})
+    };
 
     my_move_score = score_table.at(opponent_move);
     if (outcome == TIE) {

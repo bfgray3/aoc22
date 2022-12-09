@@ -61,5 +61,5 @@ int main(const int, const char** argv) {
     }
     group_rucksacks.emplace_back(rucksacks.at(group_index));
   }
-  std::cout << std::accumulate(std::cbegin(priorities), std::cend(priorities), 0) << '\n';
+  std::cout << std::accumulate(std::cbegin(priorities), std::cend(priorities), 0u) << '\n';
 }
