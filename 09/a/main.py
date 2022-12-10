@@ -1,13 +1,9 @@
 import numpy as np
 
-
-# between 1833 and 1901
-
 with open("../input.txt") as f:
     grid_list = [list(r.strip()) for r in f]
 
 grid = np.array(grid_list, dtype=np.uint8)
-grid_flipped = grid[::-1, ::-1]
 
 print(
     (
