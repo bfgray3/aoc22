@@ -15,7 +15,7 @@ int main(const int, const char** argv) {
   bool prev_instr_was_add{};
   const auto max_cycles = *std::max_element(std::cbegin(cycles), std::cend(cycles));
 
-  while (cycle_num <= max_cycles) {
+  while (cycle_num < max_cycles) {
     ++cycle_num;
 
     if (cycles.contains(cycle_num)) {
