@@ -29,9 +29,7 @@ int main(const int, const char** argv) {
     }
     std::getline(input_file_stream, instr);
 
-    prev_instr_was_add = instr.starts_with(ADDX);
-
-    if (prev_instr_was_add) {
+    if ((prev_instr_was_add = instr.starts_with(ADDX))) {
       prev_add_instr = std::stoi(instr.substr(instr.find(" ") + 1, std::string::npos));
     }
   }
