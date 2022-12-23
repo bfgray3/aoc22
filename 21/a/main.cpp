@@ -1,7 +1,7 @@
 #include <algorithm>
 #include <cctype>
 #include <functional>
-#include <map>  // TODO: unordered_map??
+#include <map>
 #include <memory>
 #include <optional>
 #include <string>
@@ -13,7 +13,7 @@ using op_function = std::function<long long(long long, long long)>;
 struct monkey {
   monkey(const std::string& input) {
     if (std::any_of(std::cbegin(input), std::cend(input), ::isdigit)) {
-      number = std::stoi(input.substr(input.find(' ') + 1u, std::string::npos));
+      number = std::stoll(input.substr(input.find(' ') + 1u, std::string::npos));
     } else {
       op = parse_op(input.at(input.find_first_of("+-*/", 1u)));
     }
@@ -62,6 +62,14 @@ std::string get_name_from_row(const std::string& r) {
   return r.substr(0, r.find(':'));
 }
 
+std::tuple<std::string, std::string, std::string> get_name_and_deps_from_row(const std::string& r) {
+  return {
+    get_name_from_row(r),
+    r.substr(6, 4),
+    r.substr(13, std::string::npos)
+  };
+}
+
 int main(const int, const char** argv) {
   std::map<std::string, std::shared_ptr<monkey>> monkeys;
   std::string name, row;
@@ -81,7 +89,8 @@ int main(const int, const char** argv) {
 
   for (const auto& row: rows) {
     if (!std::any_of(std::cbegin(row), std::cend(row), ::isdigit)) {
-      monkeys.at(get_name_from_row(row))->add_dependencies(monkeys.at(row.substr(6, 4)), monkeys.at(row.substr(13, std::string::npos)));
+      auto [name, lhs, rhs] = get_name_and_deps_from_row(row);
+      monkeys.at(name)->add_dependencies(monkeys.at(lhs), monkeys.at(rhs));
     }
   }
 
