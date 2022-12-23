@@ -8,15 +8,13 @@
 
 #include "utils.h"
 
-using op_function = std::function<int(int, int)>;
+using op_function = std::function<long long(long long, long long)>;
 
 struct monkey {
   monkey(const std::string& input) {
     if (std::any_of(std::cbegin(input), std::cend(input), ::isdigit)) {
-      // this is right
-      number = std::stoi(input.substr(input.find(' ') + 1, std::string::npos));
+      number = std::stoi(input.substr(input.find(' ') + 1u, std::string::npos));
     } else {
-      // this is right
       op = parse_op(input.at(input.find_first_of("+-*/", 1u)));
     }
   }
@@ -28,13 +26,13 @@ struct monkey {
   static op_function parse_op(const char op_char) {
     switch (op_char) {
       case '+':
-        return std::plus<int>{};
+        return std::plus<long long>{};
       case '-':
-        return std::minus<int>{};
+        return std::minus<long long>{};
       case '*':
-        return std::multiplies<int>{};
+        return std::multiplies<long long>{};
       case '/':
-        return std::divides<int>{};
+        return std::divides<long long>{};
       default:
         throw "bad input";
     }
@@ -45,7 +43,7 @@ struct monkey {
     rhs = second;
   }
 
-  int get_number() const {
+  long long get_number() const {
     //return number.value_or(op(lhs->get_number(), rhs->get_number()));
     if (number) {
       return number.value();
@@ -55,8 +53,8 @@ struct monkey {
 
   private:
   std::shared_ptr<monkey> lhs, rhs;
-  op_function op{std::plus<int>{}};  // TODO: optional??
-  std::optional<int> number;
+  op_function op{std::plus<long long>{}};  // TODO: optional??
+  std::optional<long long> number;
 };
 
 
@@ -70,14 +68,13 @@ int main(const int, const char** argv) {
     rows.push_back(row);
   }
 
-
   for (const auto& row: rows) {
     name = row.substr(0, row.find(':')); // this is right
     if (monkeys.find(name) == std::end(monkeys)) {
       monkeys.emplace(name, std::make_shared<monkey>(row));
     }
   }
-  std::cout << "done adding monkeys\n";
+
   for (const auto& row: rows) {
     if (!std::any_of(std::cbegin(row), std::cend(row), ::isdigit)) {
       std::cout << "adding deps for: " << row.substr(0, row.find(':')) << '\n';
