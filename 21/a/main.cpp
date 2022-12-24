@@ -1,10 +1,13 @@
 #include <algorithm>
 #include <cctype>
+#include <fstream>
 #include <functional>
 #include <map>
 #include <memory>
 #include <optional>
 #include <string>
+#include <utility>
+#include <vector>
 
 #include "utils.h"
 
