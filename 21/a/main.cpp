@@ -48,10 +48,7 @@ struct monkey {
   long long get_number() const {
     // this segfaults. why?
     // return number.value_or(op(lhs->get_number(), rhs->get_number()));
-    if (number) {
-      return number.value();
-    }
-    return op(lhs->get_number(), rhs->get_number());
+    return number ? number.value() : op(lhs->get_number(), rhs->get_number());
   }
 
   private:
