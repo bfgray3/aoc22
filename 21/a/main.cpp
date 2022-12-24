@@ -77,10 +77,7 @@ int main(const int, const char** argv) {
 
   while (std::getline(input_file_stream, row)) {
     rows.push_back(row);
-  }
-
-  for (const auto& r: rows) {
-    monkeys.emplace(get_name_from_row(r), std::make_shared<monkey>(r));
+    monkeys.emplace(get_name_from_row(row), std::make_shared<monkey>(row));
   }
 
   for (const auto& r: rows) {
