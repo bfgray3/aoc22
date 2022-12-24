@@ -2,14 +2,13 @@
 #include <cctype>
 #include <fstream>
 #include <functional>
+#include <iostream>
 #include <map>
 #include <memory>
 #include <optional>
 #include <string>
 #include <utility>
 #include <vector>
-
-#include "utils.h"
 
 using op_function = std::function<long long(long long, long long)>;
 
