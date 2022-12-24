@@ -41,7 +41,7 @@ struct monkey {
     }
   }
 
-  void add_dependencies(std::shared_ptr<monkey> first, std::shared_ptr<monkey> second) {
+  void add_dependencies(const std::shared_ptr<monkey> first, const std::shared_ptr<monkey> second) {
     lhs = first;
     rhs = second;
   }
@@ -92,7 +92,7 @@ int main(const int, const char** argv) {
 
   for (const auto& row: rows) {
     if (!std::any_of(std::cbegin(row), std::cend(row), ::isdigit)) {
-      auto [name, lhs, rhs] = get_name_and_deps_from_row(row);
+      const auto [name, lhs, rhs] = get_name_and_deps_from_row(row);
       monkeys.at(name)->add_dependencies(monkeys.at(lhs), monkeys.at(rhs));
     }
   }
