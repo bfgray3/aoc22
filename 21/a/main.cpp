@@ -79,16 +79,13 @@ int main(const int, const char** argv) {
     rows.push_back(row);
   }
 
-  for (const auto& row: rows) {
-    name = get_name_from_row(row);
-    if (monkeys.find(name) == std::end(monkeys)) {
-      monkeys.emplace(name, std::make_shared<monkey>(row));
-    }
+  for (const auto& r: rows) {
+    monkeys.emplace(get_name_from_row(r), std::make_shared<monkey>(r));
   }
 
-  for (const auto& row: rows) {
-    if (!std::any_of(std::cbegin(row), std::cend(row), ::isdigit)) {
-      const auto [name, lhs, rhs] = get_name_and_deps_from_row(row);
+  for (const auto& r: rows) {
+    if (!std::any_of(std::cbegin(r), std::cend(r), ::isdigit)) {
+      const auto [name, lhs, rhs] = get_name_and_deps_from_row(r);
       monkeys.at(name)->add_dependencies(monkeys.at(lhs), monkeys.at(rhs));
     }
   }
