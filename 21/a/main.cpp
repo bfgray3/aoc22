@@ -62,14 +62,14 @@ struct monkey {
 };
 
 std::string get_name_from_row(const std::string& r) {
-  return r.substr(0, r.find(':'));
+  return r.substr(0u, r.find(':'));
 }
 
 std::tuple<std::string, std::string, std::string> get_name_and_deps_from_row(const std::string& r) {
   return {
     get_name_from_row(r),
-    r.substr(6, 4),
-    r.substr(13, std::string::npos)
+    r.substr(r.find(' ') + 1u, 4u),
+    r.substr(r.find_first_of("+-*/", 1u) + 2u, std::string::npos)
   };
 }
 
