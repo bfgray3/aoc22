@@ -20,7 +20,6 @@ char priority(const char c) {
 
 int main(const int, const char** argv) {
   const auto rucksacks{utils::read_vector_from_file<std::string>(argv[1])};
-
   std::vector<char> priorities;
 
   for (const auto& r: rucksacks) {

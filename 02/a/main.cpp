@@ -42,7 +42,7 @@ static const std::unordered_map<char, std::size_t> score_table{
   {'S', 3}
 };
 
-static const std::size_t WIN{6}, TIE{3}, LOSS{};
+static constexpr std::size_t WIN{6}, TIE{3}, LOSS{};
 
 int main(const int, const char** argv) {
   std::ifstream input_file_stream{argv[1]};

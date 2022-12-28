@@ -3,17 +3,15 @@
 #include <set>
 #include <string>
 
-#include "utils.h"
-
 static const std::string ADDX{"addx"};
 static const std::set<int> cycles{20, 60, 100, 140, 180, 220};
+const auto max_cycles = *std::max_element(std::cbegin(cycles), std::cend(cycles));
 
 int main(const int, const char** argv) {
   int prev_add_instr{}, sum_signal_strength{}, x{1}, cycle_num{};
   std::string instr;
   std::ifstream input_file_stream{argv[1]};
   bool prev_instr_was_add{};
-  const auto max_cycles = *std::max_element(std::cbegin(cycles), std::cend(cycles));
 
   while (cycle_num < max_cycles) {
     ++cycle_num;

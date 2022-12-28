@@ -82,8 +82,8 @@ int main(const int, const char** argv) {
 
   for (const auto& r: rows) {
     if (!std::any_of(std::cbegin(r), std::cend(r), ::isdigit)) {
-      const auto [name, lhs, rhs] = get_name_and_deps_from_row(r);
-      monkeys.at(name)->add_dependencies(monkeys.at(lhs), monkeys.at(rhs));
+      const auto [nm, lhs, rhs] = get_name_and_deps_from_row(r);
+      monkeys.at(nm)->add_dependencies(monkeys.at(lhs), monkeys.at(rhs));
     }
   }
 

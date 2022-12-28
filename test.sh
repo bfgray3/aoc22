@@ -8,7 +8,7 @@ for d in [0-9]*
 do
   for p in a b
   do
-    if [[ ! -d "./$d/$p" ]]
+    if [[ ! -f "./$d/$p/main.cpp" ]]
     then
       continue
     fi

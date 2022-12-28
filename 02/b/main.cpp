@@ -5,7 +5,7 @@
 #include <string>
 #include <unordered_map>
 
-static const std::size_t WIN{6}, TIE{3}, LOSS{};
+static constexpr std::size_t WIN{6}, TIE{3}, LOSS{};
 
 char parse_opponent_move(const char c) {
   switch (c) {

@@ -4,15 +4,15 @@
 #include <set>
 #include <string>
 
-const static std::size_t MARKER_LENGTH{4};
+static constexpr std::size_t MARKER_LENGTH{4};
 
 int main(const int, const char** argv) {
   std::ifstream input_file_stream{argv[1]};
   std::string data;
   std::getline(input_file_stream, data);
-  std::size_t index{MARKER_LENGTH};
+  auto index{MARKER_LENGTH};
   std::set<char> s;
-  const std::string::const_iterator beg{std::cbegin(data)};
+  const auto beg{std::cbegin(data)};
   std::string::const_iterator end;
 
   for (; ; ++index) {
