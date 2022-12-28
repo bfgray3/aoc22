@@ -13,6 +13,13 @@ automatically build and test all c++ solutions with
 ./test
 ```
 
+do the above in docker with
+
+```bash
+docker build . -t aoc22  # just a single-stage build
+docker run --rm aoc22:latest
+```
+
 solutions in other languages have no automated tests but can be run with
 
 ```bash
