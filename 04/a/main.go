@@ -12,22 +12,22 @@ type rnge struct {
 	start, end int
 }
 
-type rnge_pair struct {
+type rngePair struct {
 	a, b rnge
 }
 
-func parse_rnge(s string) rnge {
-	split_s := strings.Split(s, "-")
-	start, _ := strconv.Atoi(split_s[0])
-	end, _ := strconv.Atoi(split_s[1])
+func parseRange(s string) rnge {
+	splitS := strings.Split(s, "-")
+	start, _ := strconv.Atoi(splitS[0])
+	end, _ := strconv.Atoi(splitS[1])
 	return rnge{start, end}
 }
-func parse_ranges(s string) rnge_pair {
-	split_s := strings.Split(s, ",")
-	return rnge_pair{parse_rnge(split_s[0]), parse_rnge(split_s[1])}
+func parseRanges(s string) rngePair {
+	splitS := strings.Split(s, ",")
+	return rngePair{parseRange(splitS[0]), parseRange(splitS[1])}
 }
 
-func range_contained(rp rnge_pair) bool {
+func rangeContained(rp rngePair) bool {
 	return rp.a.start >= rp.b.start && rp.a.end <= rp.b.end || rp.b.start >= rp.a.start && rp.b.end <= rp.a.end
 }
 
@@ -47,12 +47,12 @@ func main() {
 		panic("couldn't read file")
 	}
 
-	var overlap_count uint
+	var overlapCount uint
 
 	for _, row := range data {
-		if range_contained(parse_ranges(row)) {
-			overlap_count++
+		if rangeContained(parseRanges(row)) {
+			overlapCount++
 		}
 	}
-	fmt.Println(overlap_count)
+	fmt.Println(overlapCount)
 }

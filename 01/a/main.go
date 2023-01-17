@@ -23,21 +23,21 @@ func main() {
 		panic("couldn't read file")
 	}
 
-	var max_elf_cals, current_elf_cals int
+	var maxElfCals, currentElfCals int
 
 	for _, cal := range cals {
 		if cal == "" {
-			if current_elf_cals > max_elf_cals {
-				max_elf_cals = current_elf_cals
+			if currentElfCals > maxElfCals {
+				maxElfCals = currentElfCals
 			}
-			current_elf_cals = 0
+			currentElfCals = 0
 		} else {
-			cal_int, err := strconv.Atoi(cal)
+			calInt, err := strconv.Atoi(cal)
 			if err != nil {
 				panic("bad input")
 			}
-			current_elf_cals += cal_int
+			currentElfCals += calInt
 		}
 	}
-	fmt.Println(max_elf_cals)
+	fmt.Println(maxElfCals)
 }
