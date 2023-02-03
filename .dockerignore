@@ -1,10 +1,9 @@
-.dockeringore
+**/*.md
+**/*.yaml
+**/a.out
+**/aocmain
+.*ignore
 .git
-.gitignore
-.pre-commit-config.yaml
-/**/aocmain
 Dockerfile
-README.md
-/**/a.out
 requirements*
 venv
