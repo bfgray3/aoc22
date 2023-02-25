@@ -3,6 +3,7 @@ package main
 import (
 	"bufio"
 	"fmt"
+	"log"
 	"os"
 	"strconv"
 )
@@ -10,7 +11,7 @@ import (
 func main() {
 	file, err := os.Open("../input.txt")
 	if err != nil {
-		panic("couldn't open file")
+		log.Fatal("couldn't open file")
 	}
 	defer file.Close()
 
@@ -20,7 +21,7 @@ func main() {
 		cals = append(cals, scanner.Text())
 	}
 	if scanner.Err() != nil {
-		panic("couldn't read file")
+		log.Fatal("couldn't read file")
 	}
 
 	var maxElfCals, currentElfCals int
@@ -34,7 +35,7 @@ func main() {
 		} else {
 			calInt, err := strconv.Atoi(cal)
 			if err != nil {
-				panic("bad input")
+				log.Fatal("bad input")
 			}
 			currentElfCals += calInt
 		}

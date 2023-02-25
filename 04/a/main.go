@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"fmt"
 	"os"
+	"log"
 	"strconv"
 	"strings"
 )
@@ -34,7 +35,7 @@ func rangeContained(rp rngePair) bool {
 func main() {
 	file, err := os.Open("../input.txt")
 	if err != nil {
-		panic("couldn't open file")
+		log.Fatal("couldn't open file")
 	}
 	defer file.Close()
 
@@ -44,7 +45,7 @@ func main() {
 		data = append(data, scanner.Text())
 	}
 	if scanner.Err() != nil {
-		panic("couldn't read file")
+		log.Fatal("couldn't read file")
 	}
 
 	var overlapCount uint
