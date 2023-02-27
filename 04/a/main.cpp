@@ -1,5 +1,5 @@
 #include <charconv>
-#include <cstddef>
+#include <cstdint>
 #include <iostream>
 #include <ranges>
 #include <string>
