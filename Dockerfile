@@ -1,5 +1,7 @@
 FROM gcc:11.3.0
 
+# apt-get upgrade after update and before install?
+
 RUN : \
   && apt-get update \
   && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends jq \
