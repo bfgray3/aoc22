@@ -14,7 +14,8 @@ do
     fi
     for f in "$d/$p"/*
     do
-      case "${f##*.}" in
+      extension="${f##*.}"
+      case $extension in
         cpp)
           make -s day="$d" part=$p
           ans=$("./$d/$p/aocmain" "./$d/input.txt")
@@ -38,7 +39,7 @@ do
       esac
       if [[ $(jq -r ".ans$d.$p" answers.json) = "$ans" ]]
       then
-        echo "day $d part $p correct"
+        echo "day $d part $p correct: $extension"
       else
         echo "day $d part $p incorrect" >&2
         exit 1
