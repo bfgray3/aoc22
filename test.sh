@@ -6,6 +6,7 @@ make -s clean
 
 for d in [0-9]*
 do
+  input_file="./$d/input.txt"
   for p in a b
   do
     if [[ ! -d "$d/$p" ]]
@@ -18,19 +19,19 @@ do
       case $extension in
         cpp)
           make -s day="$d" part=$p
-          ans=$("./$d/$p/aocmain" "./$d/input.txt")
+          ans=$("./$d/$p/aocmain" "$input_file")
           ;;
         py)
-          ans=$(python3 "$f" "./$d/input.txt")
+          ans=$(python3 "$f" "$input_file")
           ;;
         go)
-          ans=$(go run "$f" "./$d/input.txt")
+          ans=$(go run "$f" "$input_file")
           ;;
         sh)
-          ans=$(bash "$f" "./$d/input.txt")
+          ans=$(bash "$f" "$input_file")
           ;;
         R)
-          ans=$(Rscript "$f" "./$d/input.txt")
+          ans=$(Rscript "$f" "$input_file")
           ;;
         *)
           echo "UNKNOWN FILE: $f"
