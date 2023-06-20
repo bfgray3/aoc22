@@ -12,3 +12,7 @@ repos:
     rev: 23.3.0
     hooks:
     -   id: black
+-   repo: https://github.com/lorenzwalthert/precommit
+    rev: v0.3.2.9013
+    hooks:
+    -   id: lintr
