@@ -41,7 +41,7 @@ do
       then
         echo "day $d part $p correct: $extension"
       else
-        echo "day $d part $p incorrect" >&2
+        echo "day $d part $p incorrect: $extension" >&2
         exit 1
       fi
     done
