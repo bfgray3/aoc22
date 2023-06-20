@@ -15,4 +15,4 @@ for (cal in cals) {
   }
 }
 
-cat(max_elf_cals, "\n")
+cat(max_elf_cals, "\n", sep = "")
