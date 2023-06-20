@@ -33,7 +33,7 @@ func rangeContained(rp rngePair) bool {
 }
 
 func main() {
-	file, err := os.Open("../input.txt")
+	file, err := os.Open(os.Args[1])
 	if err != nil {
 		log.Fatal("couldn't open file")
 	}

@@ -1,6 +1,8 @@
+import sys
+
 import numpy as np
 
-with open("../input.txt") as f:
+with open(sys.argv[1]) as f:
     grid_list = [list(r.strip()) for r in f]
 
 grid = np.array(grid_list, dtype=np.uint8)

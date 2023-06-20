@@ -8,9 +8,12 @@ for d in [0-9]*
 do
   for p in a b
   do
+    if [[ ! -d "$d/$p" ]]
+    then
+      continue
+    fi
     for f in "$d/$p"/*
     do
-      echo "$f"
       case "${f##*.}" in
         cpp)
           make -s day="$d" part=$p
@@ -37,6 +40,8 @@ do
       then
         echo "day $d part $p correct"
       else
+        echo "foo $ans bar"
+        echo "foo $(jq -r ".ans$d.$p" answers.json) bar"
         echo "day $d part $p incorrect" >&2
         exit 1
       fi

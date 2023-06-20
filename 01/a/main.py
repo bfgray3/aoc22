@@ -1,4 +1,6 @@
-with open("input.txt") as f:
+import sys
+
+with open(sys.argv[1]) as f:
     cals = [line.strip() for line in f]
 
 max_elf_cals = current_elf_cals = 0
