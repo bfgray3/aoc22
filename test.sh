@@ -40,8 +40,6 @@ do
       then
         echo "day $d part $p correct"
       else
-        echo "foo $ans bar"
-        echo "foo $(jq -r ".ans$d.$p" answers.json) bar"
         echo "day $d part $p incorrect" >&2
         exit 1
       fi
