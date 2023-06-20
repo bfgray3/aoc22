@@ -1,4 +1,6 @@
-cals <- readLines("../input.txt")
+args <- commandArgs(trailingOnly = TRUE)
+
+cals <- readLines(args[1])
 
 max_elf_cals <- current_elf_cals <- 0L
 

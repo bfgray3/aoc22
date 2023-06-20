@@ -10,22 +10,23 @@ do
   do
     for f in "$d/$p"/*
     do
+      echo "$f"
       case "${f##*.}" in
         cpp)
           make -s day="$d" part=$p
           ans=$("./$d/$p/aocmain" "./$d/input.txt")
           ;;
         py)
-          ans=$(python3 "$f")
+          ans=$(python3 "$f" "./$d/input.txt")
           ;;
         go)
-          ans=$(go run "$f")
+          ans=$(go run "$f" "./$d/input.txt")
           ;;
         sh)
-          ans=$(bash "$f")
+          ans=$(bash "$f" "./$d/input.txt")
           ;;
         R)
-          ans=$(Rscript "$f")
+          ans=$(Rscript "$f" "./$d/input.txt")
           ;;
         *)
           echo "UNKNOWN FILE: $f"
