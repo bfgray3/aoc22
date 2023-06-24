@@ -33,6 +33,10 @@ bool range_overlapped(const range_pair& rp) {
 
 int main(const int, const char** argv) {
   const auto data{utils::read_vector_from_file<std::string>(argv[1])};
-  const auto overlap_count{std::ranges::distance(data | std::views::transform(parse_ranges) | std::views::filter(range_overlapped))};
+  const auto overlap_count{
+    std::ranges::distance(
+      data | std::views::transform(parse_ranges) | std::views::filter(range_overlapped)
+    )
+  };
   std::cout << overlap_count << '\n';
 }

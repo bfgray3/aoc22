@@ -28,11 +28,16 @@ range_pair parse_ranges(std::string_view s) {
 
 bool range_contained(const range_pair& rp) {
   const auto& [a, b] = rp;
-  return (a.first >= b.first && a.second <= b.second) || (b.first >= a.first && b.second <= a.second);
+  return (a.first >= b.first && a.second <= b.second) ||
+    (b.first >= a.first && b.second <= a.second);
 }
 
 int main(const int, const char** argv) {
   const auto data{utils::read_vector_from_file<std::string>(argv[1])};
-  const auto contained_count{std::ranges::distance(data | std::views::transform(parse_ranges) | std::views::filter(range_contained))};
+  const auto contained_count{
+    std::ranges::distance(
+      data | std::views::transform(parse_ranges) | std::views::filter(range_contained)
+    )
+  };
   std::cout << contained_count << '\n';
 }
