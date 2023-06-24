@@ -3,7 +3,7 @@
 #include <set>
 #include <string>
 
-static const std::string ADDX{"addx"};
+static const char* ADDX{"addx"};
 static const std::set<int> cycles{20, 60, 100, 140, 180, 220};
 const auto max_cycles = *std::max_element(std::cbegin(cycles), std::cend(cycles));
 

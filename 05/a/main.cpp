@@ -1,5 +1,5 @@
-#include <charconv>
 #include <cstdint>
+#include <charconv>
 #include <fstream>
 #include <iostream>
 #include <ranges>
@@ -27,7 +27,9 @@ int main(const int, const char** argv) {
   }
 
   const auto& bottom_row{*(std::cend(stack_rows) - 2)};
-  const auto num_stacks{std::count(std::cbegin(bottom_row), std::cend(bottom_row), '[')};
+  const auto num_stacks{
+    std::count(std::cbegin(bottom_row), std::cend(bottom_row), '[')
+  };
   const auto raw_row_length{stack_rows.front().length()};
 
   std::vector<std::stack<char>> stacks(num_stacks);
@@ -39,7 +41,7 @@ int main(const int, const char** argv) {
     }
   }
 
-  for (auto& r: std::ranges::views::reverse(parsed_rows)) {
+  for (auto& r : std::ranges::views::reverse(parsed_rows)) {
     for (std::size_t column{}; std::cmp_less(column, num_stacks); ++column) {
       const auto& c{r.at(column)};
       if (c != ' ') {
@@ -48,7 +50,7 @@ int main(const int, const char** argv) {
     }
   }
 
-  for (const auto& move: move_rows) {
+  for (const auto& move : move_rows) {
     std::smatch m;
     std::regex_search(move, m, re);
 
@@ -62,7 +64,7 @@ int main(const int, const char** argv) {
     }
   }
 
-  for (const auto& s: stacks) {
+  for (const auto& s : stacks) {
     std::cout << s.top();
   }
   std::cout << '\n';

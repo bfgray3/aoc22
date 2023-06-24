@@ -34,4 +34,4 @@ void write_vector_to_stdout(const std::vector<T> &v) {
   std::copy(std::begin(v), std::end(v), std::ostream_iterator<T>{std::cout, "\n"});
 }
 
-} // namespace utils
+}  // namespace utils

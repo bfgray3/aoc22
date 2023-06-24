@@ -34,6 +34,8 @@ repos:
     rev: v1.3.5
     hooks:
     -   id: cppcheck
-        args: [--language=c++, --std=c++14]
-    #-   id: clang-tidy
-    #-   id: include-what-you-use
+        args: [--language=c++, --std=c++20]
+    -   id: clang-tidy
+        args: [-extra-arg=-std=c++20]
+    -   id: cpplint
+        args: [--linelength=88, --filter=-legal]
