@@ -1,4 +1,5 @@
 **/*.md
+**/*.pyc
 **/*.yaml
 **/a.out
 **/aocmain

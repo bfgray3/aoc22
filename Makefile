@@ -12,3 +12,4 @@ $(SUBDIR)/aocmain:
 clean:
 	find -type f -name aocmain -delete
 	find -type f -name a.out -delete
+	find . -name __pycache__ -type d -exec rm -rf {} +
