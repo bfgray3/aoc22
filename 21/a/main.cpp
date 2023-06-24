@@ -13,7 +13,7 @@
 using op_function = std::function<long long(long long, long long)>;
 
 struct monkey {
-  monkey(const std::string& input) {
+  explicit monkey(const std::string& input) {
     if (std::any_of(std::cbegin(input), std::cend(input), ::isdigit)) {
       number = std::stoll(input.substr(input.find(' ') + 1u, std::string::npos));
     } else {
@@ -71,7 +71,7 @@ std::tuple<std::string, std::string, std::string> get_name_and_deps_from_row(con
 
 int main(const int, const char** argv) {
   std::map<std::string, std::shared_ptr<monkey>> monkeys;
-  std::string name, row;
+  std::string row;
   std::ifstream input_file_stream{argv[1]};
   std::vector<std::string> rows;
 
