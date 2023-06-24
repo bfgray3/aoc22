@@ -1,5 +1,5 @@
-#include <cstdint>
 #include <charconv>
+#include <cstdint>
 #include <fstream>
 #include <iostream>
 #include <ranges>
@@ -27,9 +27,7 @@ int main(const int, const char** argv) {
   }
 
   const auto& bottom_row{*(std::cend(stack_rows) - 2)};
-  const auto num_stacks{
-    std::count(std::cbegin(bottom_row), std::cend(bottom_row), '[')
-  };
+  const auto num_stacks{std::count(std::cbegin(bottom_row), std::cend(bottom_row), '[')};
   const auto raw_row_length{stack_rows.front().length()};
 
   std::vector<std::stack<char>> stacks(num_stacks);
