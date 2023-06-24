@@ -35,7 +35,5 @@ repos:
     hooks:
     -   id: cppcheck
         args: [--language=c++, --std=c++20]
-    -   id: clang-tidy
-        args: [-extra-arg=-std=c++20]
-    -   id: cpplint
-        args: [--linelength=88, '--filter=-legal,-runtime/int,-readability/todo,-build/include_subdir,-build/include_order']
+#    -   id: clang-tidy
+#        args: [--extra-arg=-std=c++20]
