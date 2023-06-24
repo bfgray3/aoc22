@@ -28,7 +28,9 @@ int main(const int, const char** argv) {
   }
 
   const auto& bottom_row{*(std::cend(stack_rows) - 2)};
-  const auto num_stacks{std::count(std::cbegin(bottom_row), std::cend(bottom_row), '[')};
+  const auto num_stacks{
+    std::count(std::cbegin(bottom_row), std::cend(bottom_row), '[')
+  };
   const auto raw_row_length{stack_rows.front().length()};
 
   std::vector<std::vector<char>> stacks(num_stacks);
@@ -40,7 +42,7 @@ int main(const int, const char** argv) {
     }
   }
 
-  for (const auto& r: std::ranges::views::reverse(parsed_rows)) {
+  for (const auto& r : std::ranges::views::reverse(parsed_rows)) {
     for (std::size_t column{}; std::cmp_less(column, num_stacks); ++column) {
       const auto& c{r.at(column)};
       if (c != ' ') {
@@ -49,7 +51,7 @@ int main(const int, const char** argv) {
     }
   }
 
-  for (const auto& move: move_rows) {
+  for (const auto& move : move_rows) {
     std::smatch m;
     std::regex_search(move, m, re);
 
@@ -59,15 +61,11 @@ int main(const int, const char** argv) {
 
     auto& from_stack{stacks.at(from - 1)};
     const auto cutoff{std::cend(from_stack) - count};
-    std::copy(
-      cutoff,
-      std::cend(from_stack),
-      std::back_inserter(stacks.at(to - 1))
-    );
+    std::copy(cutoff, std::cend(from_stack), std::back_inserter(stacks.at(to - 1)));
     from_stack.erase(cutoff, std::cend(from_stack));
   }
 
-  for (const auto& s: stacks) {
+  for (const auto& s : stacks) {
     std::cout << s.back();
   }
   std::cout << '\n';

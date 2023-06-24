@@ -39,7 +39,7 @@ int main(const int, const char** argv) {
     }
   }
 
-  for (auto& r: std::ranges::views::reverse(parsed_rows)) {
+  for (auto& r : std::ranges::views::reverse(parsed_rows)) {
     for (std::size_t column{}; std::cmp_less(column, num_stacks); ++column) {
       const auto& c{r.at(column)};
       if (c != ' ') {
@@ -48,7 +48,7 @@ int main(const int, const char** argv) {
     }
   }
 
-  for (const auto& move: move_rows) {
+  for (const auto& move : move_rows) {
     std::smatch m;
     std::regex_search(move, m, re);
 
@@ -62,7 +62,7 @@ int main(const int, const char** argv) {
     }
   }
 
-  for (const auto& s: stacks) {
+  for (const auto& s : stacks) {
     std::cout << s.top();
   }
   std::cout << '\n';

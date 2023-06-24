@@ -13,7 +13,7 @@
 using op_function = std::function<long long(long long, long long)>;
 
 struct monkey {
-  monkey(const std::string& input) {
+  explicit monkey(const std::string& input) {
     if (std::any_of(std::cbegin(input), std::cend(input), ::isdigit)) {
       number = std::stoll(input.substr(input.find(' ') + 1u, std::string::npos));
     } else {
@@ -40,7 +40,10 @@ struct monkey {
     }
   }
 
-  void add_dependencies(const std::shared_ptr<monkey> first, const std::shared_ptr<monkey> second) {
+  void add_dependencies(
+    const std::shared_ptr<monkey> first,
+    const std::shared_ptr<monkey> second
+  ) {
     lhs = first;
     rhs = second;
   }
@@ -61,7 +64,9 @@ std::string get_name_from_row(const std::string& r) {
   return r.substr(0u, r.find(':'));
 }
 
-std::tuple<std::string, std::string, std::string> get_name_and_deps_from_row(const std::string& r) {
+std::tuple<std::string, std::string, std::string> get_name_and_deps_from_row(
+  const std::string& r
+) {
   return {
     get_name_from_row(r),
     r.substr(r.find(' ') + 1u, 4u),
@@ -71,7 +76,7 @@ std::tuple<std::string, std::string, std::string> get_name_and_deps_from_row(con
 
 int main(const int, const char** argv) {
   std::map<std::string, std::shared_ptr<monkey>> monkeys;
-  std::string name, row;
+  std::string row;
   std::ifstream input_file_stream{argv[1]};
   std::vector<std::string> rows;
 
@@ -80,7 +85,7 @@ int main(const int, const char** argv) {
     monkeys.emplace(get_name_from_row(row), std::make_shared<monkey>(row));
   }
 
-  for (const auto& r: rows) {
+  for (const auto& r : rows) {
     if (!std::any_of(std::cbegin(r), std::cend(r), ::isdigit)) {
       const auto [nm, lhs, rhs] = get_name_and_deps_from_row(r);
       monkeys.at(nm)->add_dependencies(monkeys.at(lhs), monkeys.at(rhs));

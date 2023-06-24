@@ -33,6 +33,10 @@ bool range_contained(const range_pair& rp) {
 
 int main(const int, const char** argv) {
   const auto data{utils::read_vector_from_file<std::string>(argv[1])};
-  const auto contained_count{std::ranges::distance(data | std::views::transform(parse_ranges) | std::views::filter(range_contained))};
+  const auto contained_count{
+    std::ranges::distance(
+      data | std::views::transform(parse_ranges) | std::views::filter(range_contained)
+    )
+  };
   std::cout << contained_count << '\n';
 }
