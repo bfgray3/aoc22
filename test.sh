@@ -13,6 +13,7 @@ do
     then
       continue
     fi
+    correct_answer=$(jq -r ".ans$d.$p" answers.json)
     for f in "$d/$p"/*
     do
       extension="${f##*.}"
@@ -38,7 +39,7 @@ do
           continue
           ;;
       esac
-      if [[ $(jq -r ".ans$d.$p" answers.json) = "$ans" ]]
+      if [[ "$ans" = "$correct_answer" ]]
       then
         echo "day $d part $p correct: $extension"
       else
