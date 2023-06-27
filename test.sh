@@ -26,7 +26,7 @@ do
           ans=$(python3 "$f" "$input_file")
           ;;
         go)
-          echo go # ans=$(go run "$f" "$input_file")
+          ans=$(go run "$f" "$input_file")
           ;;
         sh)
           ans=$(bash "$f" "$input_file")

@@ -2,7 +2,7 @@ FROM gcc:11.3.0
 
 # apt-get upgrade after update and before install?
 
-# go     TODO
+ARG GO_TARBALL=go1.20.5.linux-amd64.tar.gz
 
 RUN : \
   && apt-get update \
@@ -10,6 +10,14 @@ RUN : \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/* \
   && :
+
+RUN : \
+  && curl -OL https://golang.org/dl/$GO_TARBALL \
+  && tar -C /usr/local -xvf $GO_TARBALL \
+  && rm $GO_TARBALL \
+  && :
+
+ENV PATH=$PATH:/usr/local/go/bin
 
 WORKDIR aoc
 
