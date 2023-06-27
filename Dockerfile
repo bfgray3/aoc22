@@ -6,7 +6,7 @@ ARG GO_TARBALL=go1.20.5.linux-amd64.tar.gz
 
 RUN : \
   && apt-get update \
-  && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends jq r-base python3-venv \
+  && DEBIAN_FRONTEND=noninteractive apt-get install --yes --no-install-recommends jq r-base python3-venv \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/* \
   && :
@@ -21,7 +21,7 @@ ENV PATH=$PATH:/usr/local/go/bin
 
 WORKDIR aoc
 
-COPY . .
+COPY requirements.txt .
 
 ENV PATH=/venv/bin:$PATH
 
@@ -29,5 +29,7 @@ RUN : \
   && python3 -m venv /venv \
   && pip --no-cache-dir install -r requirements.txt \
   && :
+
+COPY . .
 
 CMD ./test.sh
