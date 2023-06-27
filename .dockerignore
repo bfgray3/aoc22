@@ -8,3 +8,4 @@
 Dockerfile
 requirements*
 venv
+!requirements.txt
