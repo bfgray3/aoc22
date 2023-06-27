@@ -10,4 +10,6 @@ the image and tests support the following languages:
 
 ## usage
 
-build the image for testing with `make build` and test all solutions in the above languages with `make test`. files named `<DD>/{a,b}/main.{sh,cpp,go,py,R}` will be tested.
+1. write solutions in files named `<DD>/{a,b}/main.{sh,cpp,go,py,R}`. each program/script should output the answer (and only the answer) to stdout.
+2. build the image for testing with `make build`.
+3. test all solutions in the above languages with `make test`.
