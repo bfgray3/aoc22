@@ -10,12 +10,16 @@ import (
 
 var sentinel any
 
-// TODO: make the other literals globals
+const lowercaseA byte = byte('a')
+const lowercaseZ byte = byte('z')
+const uppercaseA byte = byte('A')
+const uppercaseZ byte = byte('Z')
+
 func priority(c byte) (byte, error) {
-	if c >= byte('a') && c <= byte('z') {
-		return c - byte('a') + 1, nil
-	} else if c >= byte('A') && c <= byte('Z') {
-		return c - 2*byte('A') + byte('Z') + 2, nil
+	if c >= lowercaseA && c <= lowercaseZ {
+		return c - lowercaseA + 1, nil
+	} else if c >= uppercaseA && c <= uppercaseZ {
+		return c - 2*uppercaseA + uppercaseZ + 2, nil
 	} else {
 		return 0, errors.New("bad input")
 	}
