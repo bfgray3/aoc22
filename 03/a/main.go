@@ -45,13 +45,15 @@ func main() {
 	var intersection byte
 
 	for _, r := range rucksacks {
-		c1 := make(map[byte]any)
-		c2 := make(map[byte]any)
+		halfSize := len(r) / 2
 
-		for i := 0; i < len(r)/2; i++ {
+		c1 := make(map[byte]any, halfSize)
+		c2 := make(map[byte]any, halfSize)
+
+		for i := 0; i < halfSize; i++ {
 			c1[r[i]] = sentinel
 		}
-		for i := len(r) / 2; i < len(r); i++ {
+		for i := halfSize; i < len(r); i++ {
 			c2[r[i]] = sentinel
 		}
 
