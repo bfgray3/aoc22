@@ -48,21 +48,17 @@ func main() {
 		halfSize := len(r) / 2
 
 		c1 := make(map[byte]any, halfSize)
-		c2 := make(map[byte]any, halfSize)
 
 		for i := 0; i < halfSize; i++ {
 			c1[r[i]] = sentinel
 		}
 		for i := halfSize; i < len(r); i++ {
-			c2[r[i]] = sentinel
-		}
-
-		for k := range c1 {
-			if _, ok := c2[k]; ok {
-				intersection = k
+			if _, ok := c1[r[i]]; ok {
+				intersection = r[i]
 				break
 			}
 		}
+
 		rPriority, err := priority(intersection)
 		if err != nil {
 			log.Fatal("error finding priority")
