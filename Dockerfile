@@ -30,6 +30,4 @@ RUN : \
   && pip --no-cache-dir install -r requirements.txt \
   && :
 
-COPY . .
-
 CMD ./test.sh
