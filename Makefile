@@ -8,8 +8,6 @@ SUBDIR = $(day)/$(part)
 $(SUBDIR)/aocmain:
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -o $@ $(wildcard $(SUBDIR)/*.cpp)
 
-# pre-commit: go fix/fmt/vet???
-
 clean:
 	# TODO: go clean
 	find -type f -name aocmain -delete
