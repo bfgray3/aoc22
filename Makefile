@@ -9,7 +9,7 @@ $(SUBDIR)/aocmain:
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -o $@ $(wildcard $(SUBDIR)/*.cpp)
 
 clean:
-	# TODO: go clean
+	go clean -cache
 	find -type f -name aocmain -delete
 	find -type f -name a.out -delete
 	find . -name __pycache__ -type d -exec rm -rf {} +

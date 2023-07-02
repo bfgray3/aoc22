@@ -1,7 +1,5 @@
 FROM gcc:11.3.0
 
-# apt-get upgrade after update and before install?
-
 ARG GO_TARBALL=go1.20.5.linux-amd64.tar.gz
 
 RUN : \
