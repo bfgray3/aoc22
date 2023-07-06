@@ -2,6 +2,8 @@
 
 set -eu
 
+# TODO: get arguments for which days/parts to run
+
 make -s clean
 
 for d in [0-9]*

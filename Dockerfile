@@ -28,4 +28,4 @@ RUN : \
   && pip --no-cache-dir install -r requirements.txt \
   && :
 
-CMD ./test.sh
+ENTRYPOINT ["./test.sh"]

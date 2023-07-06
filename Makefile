@@ -18,4 +18,4 @@ build:
 	@docker build --pull . -t aoc22  # just a single-stage build
 
 test:
-	@docker run -v $(shell pwd):/aoc --rm aoc22:latest
+	@docker run -v $(shell pwd):/aoc --rm aoc22:latest  # TODO: pass args for which days/parts to run
