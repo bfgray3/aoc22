@@ -1,4 +1,4 @@
-FROM gcc:11.3.0
+FROM gcc:13.1
 
 ARG GO_TARBALL=go1.20.5.linux-amd64.tar.gz
 
