@@ -7,35 +7,35 @@ set -eu
 make -s clean
 
 function test_one {
-  local f=$1
-  local correct_answer=$2
-  echo 'this is f'
-  echo $f
+  local f correct_answer day part extension ans
 
+  f=$1
+  correct_answer=$2
+  day=$3
+  part=$4
 
-  local extension="${f##*.}"
+  extension="${f##*.}"
 
   case $extension in
     cpp)
-      #make -s day="$d" part=$p
-      #local ans=$("./$d/$p/aocmain" "$input_file")
-      return
+      make -s day="$day" part="$part"
+      ans=$("./$d/$p/aocmain" "$input_file")
       ;;
     py)
-      local ans=$(python3 "$f" "$input_file")
+      ans=$(python3 "$f" "$input_file")
       ;;
     go)
-      local ans=$(/usr/local/go/bin/go run "$f" "$input_file")  # TODO: cleanup which executable
+      ans=$(/usr/local/go/bin/go run "$f" "$input_file")  # TODO: cleanup which executable
       ;;
     sh)
-      local ans=$(bash "$f" "$input_file")
+      ans=$(bash "$f" "$input_file")
       ;;
     R)
-      local ans=$(Rscript "$f" "$input_file")
+      ans=$(Rscript "$f" "$input_file")
       ;;
     *)
       echo "UNKNOWN FILE: $f"
-      continue
+      return
       ;;
   esac
 
@@ -47,8 +47,6 @@ function test_one {
     exit 1
   fi
 }
-
-
 
 
 for d in [0-9]*
@@ -63,7 +61,7 @@ do
     correct_answer=$(jq -r ".ans$d.$p" answers.json)
     for f in "$d/$p"/*
     do
-      test_one "$f" "$correct_answer"
+      test_one "$f" "$correct_answer" "$d" "$p"
     done
   done
 done
