@@ -5,7 +5,7 @@ set -eu
 make -s clean
 
 function test_one {
-  local f correct_answer day part extension ans
+  local f correct_answer day part extension ans  # TODO: remove day, part
 
   f=$1
   correct_answer=$2
