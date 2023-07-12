@@ -15,7 +15,7 @@ RUN : \
   && rm $GO_TARBALL \
   && :
 
-ENV PATH=$PATH:/usr/local/go/bin
+ENV PATH=$PATH:/usr/local/go/bin  # TODO: cleanup this vs. the one that comes with the base image
 
 WORKDIR aoc
 
