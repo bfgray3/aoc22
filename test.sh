@@ -2,8 +2,6 @@
 
 set -eu
 
-# TODO: get arguments for which days/parts to run
-
 make -s clean
 
 function test_one {
@@ -47,6 +45,10 @@ function test_one {
     exit 1
   fi
 }
+
+
+# TODO: command line args to do only one part--do that and exit
+
 
 
 for d in [0-9]*
