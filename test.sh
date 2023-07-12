@@ -9,14 +9,14 @@ function test_one {
 
   f=$1
   correct_answer=$2
-  day=$3
-  part=$4
+  day=$3  # TODO: remove
+  part=$4  # TODO: remove
 
   extension="${f##*.}"
 
   case $extension in
     cpp)
-      make -s day="$day" part="$part"
+      make -s day="$day" part="$part"  # TODO: clean this up to take just the directory so we don't need day and part
       ans=$("./$d/$p/aocmain" "$input_file")
       ;;
     py)
@@ -63,7 +63,7 @@ do
     correct_answer=$(jq -r ".ans$d.$p" answers.json)
     for f in "$d/$p"/*
     do
-      test_one "$f" "$correct_answer" "$d" "$p"
+      test_one "$f" "$correct_answer" "$d" "$p"  # TODO: remove $3, $4
     done
   done
 done
