@@ -54,7 +54,7 @@ function test_one {
       ans=$(Rscript "$f" "$input_file")
       ;;
     *)
-      echo "UNKNOWN FILE: $f"
+      echo "UNKNOWN FILE: $f" >&2
       return
       ;;
   esac
@@ -71,7 +71,7 @@ function test_one {
 }
 
 
-if [[ $# -eq 1 ]]  # TODO: number
+if [[ $# -eq 1 ]]
 then
   test_one file answer
 elif [[ $# -eq 0 ]]
@@ -84,6 +84,6 @@ then
     done
   done
 else
-  echo "Usage: TODO" >&2
+  echo "Usage: ./test.sh [dd{a,b}]" >&2
   exit 1
 fi
