@@ -47,23 +47,28 @@ function test_one {
 }
 
 
-# TODO: command line args to do only one part--do that and exit
-
-
-
-for d in [0-9]*
-do
-  input_file="./$d/input.txt"
-  for p in a b
+if [[ $# -eq 1 ]]  # TODO: number
+then
+  test_one file answer day part
+elif [[ $# -eq 0 ]]
+then
+  for d in [0-9]*
   do
-    if [[ ! -d "$d/$p" ]]
-    then
-      continue
-    fi
-    correct_answer=$(jq -r ".ans$d.$p" answers.json)
-    for f in "$d/$p"/*
+    input_file="./$d/input.txt"
+    for p in a b
     do
-      test_one "$f" "$correct_answer" "$d" "$p"  # TODO: remove $3, $4
+      if [[ ! -d "$d/$p" ]]
+      then
+        continue
+      fi
+      correct_answer=$(jq -r ".ans$d.$p" answers.json)
+      for f in "$d/$p"/*
+      do
+        test_one "$f" "$correct_answer" "$d" "$p"  # TODO: remove $3, $4
+      done
     done
   done
-done
+else
+  echo "Usage: TODO" >&2
+  exit 1
+fi
