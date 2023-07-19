@@ -1,6 +1,5 @@
 .PHONY: clean build test all
 
-.DEFAULT_GOAL := all
 CXXFLAGS = -Wall -Wextra -Wshadow -Werror -Wconversion -Wpedantic -std=c++20 -O3
 CPPFLAGS = -I./include
 CXX = g++

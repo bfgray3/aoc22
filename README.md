@@ -16,7 +16,8 @@ the image and tests support the following languages:
 2. build the image for testing with `make build`.
 3. test all solutions in the above languages with `make test`.
 4. test all solutions for a given day/part with `make test path=<dd>/{a,b}/`, e.g. `make test path=05/a/`.
-5. once there is a correct solution for a given day/part, add it to [answers.json](answers.json) in a format like the following:
+5. clean up the repo, build the image, and test all solutions with `make all`.
+6. once there is a correct solution for a given day/part, add it to [answers.json](answers.json) in a format like the following:
 
 ```json
 {
