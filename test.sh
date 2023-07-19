@@ -32,14 +32,14 @@ function test_one {
   f=$1
   correct_answer=$2
 
+  #echo "****f: $f"
+
   extension="${f##*.}"
 
   case $extension in
     cpp)
-      echo cpp
-      #make -s day="$day" part="$part"  # TODO: clean this up to take just the directory so we don't need day and part
-      #ans=$("./$d/$p/aocmain" "$input_file")
-      return
+      make -s path="$f"  # TODO: clean this up to take just the directory so we don't need day and part
+      ans=$("./$d/$p/aocmain" "$input_file")
       ;;
     py)
       ans=$(python3 "$f" "$input_file")

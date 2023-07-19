@@ -3,7 +3,7 @@
 CXXFLAGS = -Wall -Wextra -Wshadow -Werror -Wconversion -Wpedantic -std=c++20 -O3
 CPPFLAGS = -I./include
 CXX = g++
-SUBDIR = $(day)/$(part)  # TODO: don't pass these separately
+SUBDIR = $(dir $(path))
 
 $(SUBDIR)/aocmain:
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -o $@ $(wildcard $(SUBDIR)/*.cpp)
