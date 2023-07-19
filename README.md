@@ -10,7 +10,7 @@ the image and tests support the following languages:
 
 ## usage
 
-1. write solutions in files named `<DD>/{a,b}/main.{sh,cpp,go,py,R}`.
+1. write solutions in files named `<dd>/{a,b}/main.{sh,cpp,go,py,R}`.
     1. each program/script should output the answer (and only the answer) to stdout.
     2. each program/script should expect exactly one command line argument, which is the file containing the input data.
 2. build the image for testing with `make build`.
