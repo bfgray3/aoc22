@@ -32,14 +32,12 @@ function test_one {
   f=$1
   correct_answer=$2
 
-  #echo "****f: $f"
-
   extension="${f##*.}"
 
   case $extension in
     cpp)
       make -s path="$f"  # TODO: clean this up to take just the directory so we don't need day and part
-      ans=$("./$d/$p/aocmain" "$input_file")
+      ans=$("./$(dirname "$f")/aocmain" "$input_file")
       ;;
     py)
       ans=$(python3 "$f" "$input_file")
@@ -61,11 +59,9 @@ function test_one {
 
   if [[ "$ans" = "$correct_answer" ]]
   then
-    # FIXME: d/p not available anymore
-    echo "day $d part $p correct: $extension"
+    echo "$f correct: $extension"
   else
-    # FIXME: d/p not available anymore
-    echo "day $d part $p incorrect: $extension; got $ans and expected $correct_answer" >&2
+    echo "$f incorrect: $extension; got $ans and expected $correct_answer" >&2
     exit 1
   fi
 }
@@ -73,7 +69,7 @@ function test_one {
 
 if [[ $# -eq 1 ]]
 then
-  test_one file answer
+  test_part "$(cut -d/ -f 1 <<< "$1")" "$(cut -d/ -f 2 <<< "$1")"
 elif [[ $# -eq 0 ]]
 then
   for d in [0-9]*
@@ -84,6 +80,6 @@ then
     done
   done
 else
-  echo "Usage: ./test.sh [dd{a,b}]" >&2
+  echo "Usage: ./test.sh [dd/{a,b}]" >&2
   exit 1
 fi
