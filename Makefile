@@ -1,5 +1,6 @@
-.PHONY: build clean test
+.PHONY: clean build test all
 
+.DEFAULT_GOAL := all
 CXXFLAGS = -Wall -Wextra -Wshadow -Werror -Wconversion -Wpedantic -std=c++20 -O3
 CPPFLAGS = -I./include
 CXX = g++
@@ -19,3 +20,5 @@ build:
 
 test:
 	@docker run -v $(shell pwd):/aoc --rm aoc22:latest $(SUBDIR)
+
+all: clean build test

@@ -21,22 +21,22 @@ function test_part {
 
   for f in "$day/$part"/*
   do
-    test_one "$f" "$correct_answer"
+    test_one "$f" "$correct_answer" "$input_file"
   done
 }
 
 function test_one {
-  local f correct_answer extension ans
-  # TODO: make input_file local too
+  local f correct_answer input_file extension ans
 
   f=$1
   correct_answer=$2
+  input_file=$3
 
   extension="${f##*.}"
 
   case $extension in
     cpp)
-      make -s path="$f"  # TODO: clean this up to take just the directory so we don't need day and part
+      make -s path="$f"
       ans=$("./$(dirname "$f")/aocmain" "$input_file")
       ;;
     py)
