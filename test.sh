@@ -80,6 +80,6 @@ then
     done
   done
 else
-  echo "Usage: ./test.sh [dd/{a,b}]" >&2
+  echo "Usage: ./test.sh [<dd>/{a,b}/]" >&2
   exit 1
 fi
