@@ -1,9 +1,9 @@
-.PHONY: build clean test
+.PHONY: clean build test all
 
 CXXFLAGS = -Wall -Wextra -Wshadow -Werror -Wconversion -Wpedantic -std=c++20 -O3
 CPPFLAGS = -I./include
 CXX = g++
-SUBDIR = $(day)/$(part)
+SUBDIR = $(dir $(path))
 
 $(SUBDIR)/aocmain:
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -o $@ $(wildcard $(SUBDIR)/*.cpp)
@@ -18,4 +18,6 @@ build:
 	@docker build --pull . -t aoc22  # just a single-stage build
 
 test:
-	@docker run -v $(shell pwd):/aoc --rm aoc22:latest
+	@docker run -v $(shell pwd):/aoc --rm aoc22:latest $(SUBDIR)
+
+all: clean build test

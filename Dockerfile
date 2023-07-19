@@ -15,6 +15,7 @@ RUN : \
   && rm $GO_TARBALL \
   && :
 
+# TODO: cleanup this vs. the one that comes with the base image
 ENV PATH=$PATH:/usr/local/go/bin
 
 WORKDIR aoc
@@ -28,4 +29,4 @@ RUN : \
   && pip --no-cache-dir install -r requirements.txt \
   && :
 
-CMD ./test.sh
+ENTRYPOINT ["./test.sh"]
