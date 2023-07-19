@@ -59,9 +59,9 @@ function test_one {
 
   if [[ "$ans" = "$correct_answer" ]]
   then
-    echo "$f correct: $extension"
+    echo "$f correct"
   else
-    echo "$f incorrect: $extension; got $ans and expected $correct_answer" >&2
+    echo "$f incorrect; got $ans and expected $correct_answer" >&2
     exit 1
   fi
 }
