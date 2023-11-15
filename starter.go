@@ -25,8 +25,13 @@ with open(sys.argv[1]) as f:
 
 print()
 `
-	Go    Language = "go"
-	R     Language = "R"
+	Go Language = "go"
+	R  Language = `args <- commandArgs(trailingOnly = TRUE)
+
+TODO <- readLines(args[1])
+
+cat(TODO, "\n", sep = "")
+`
 	Shell Language = "sh"
 )
 
@@ -55,5 +60,5 @@ func main() {
 	filename := fmt.Sprintf("main.%s", *lang)
 	formattedDay := fmt.Sprintf("%02d", *day)
 	path := filepath.Join(formattedDay, *part, filename)
-	write(path, string(Python)) // TODO: figure out the contents to write here
+	write(path, string(R)) // TODO: figure out the contents to write here
 }
