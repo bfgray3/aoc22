@@ -18,10 +18,16 @@ type Language string
 
 const (
 	Cpp    Language = "cpp"
-	Python Language = "py"
-	Go     Language = "go"
-	R      Language = "R"
-	Shell  Language = "sh"
+	Python Language = `import sys
+
+with open(sys.argv[1]) as f:
+     TODO = [line.strip() for line in f]
+
+print()
+`
+	Go    Language = "go"
+	R     Language = "R"
+	Shell Language = "sh"
 )
 
 func write(name, contents string) {
@@ -33,7 +39,7 @@ func write(name, contents string) {
 
 	defer file.Close()
 
-	_, writeErr := file.WriteString(contents + "\n")
+	_, writeErr := file.WriteString(contents)
 
 	if writeErr != nil {
 		log.Fatal(writeErr)
@@ -49,5 +55,5 @@ func main() {
 	filename := fmt.Sprintf("main.%s", *lang)
 	formattedDay := fmt.Sprintf("%02d", *day)
 	path := filepath.Join(formattedDay, *part, filename)
-	write(path, string(Cpp))
+	write(path, string(Python)) // TODO: figure out the contents to write here
 }
