@@ -14,6 +14,16 @@ var (
 	lang = flag.String("lang", "cpp", "language")
 )
 
+type Language string
+
+const (
+	Cpp    Language = "cpp"
+	Python Language = "py"
+	Go     Language = "go"
+	R      Language = "R"
+	Shell  Language = "sh"
+)
+
 func write(name, contents string) {
 	file, createErr := os.Create(name)
 
@@ -39,5 +49,5 @@ func main() {
 	filename := fmt.Sprintf("main.%s", *lang)
 	formattedDay := fmt.Sprintf("%02d", *day)
 	path := filepath.Join(formattedDay, *part, filename)
-	write(path, "foo")
+	write(path, string(Cpp))
 }
