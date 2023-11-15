@@ -17,7 +17,12 @@ var (
 type Language string
 
 const (
-	Cpp    Language = "cpp"
+	Cpp Language = `#include <iostream>
+
+int main(const int, const char** argv) {
+  std::cout << TODO << '\n';
+}
+`
 	Python Language = `import sys
 
 with open(sys.argv[1]) as f:
@@ -60,5 +65,5 @@ func main() {
 	filename := fmt.Sprintf("main.%s", *lang)
 	formattedDay := fmt.Sprintf("%02d", *day)
 	path := filepath.Join(formattedDay, *part, filename)
-	write(path, string(R)) // TODO: figure out the contents to write here
+	write(path, string(Cpp)) // TODO: figure out the contents to write here
 }
