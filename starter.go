@@ -3,6 +3,8 @@ package main
 import (
 	"flag"
 	"fmt"
+	"log"
+	"os"
 	"path/filepath"
 )
 
@@ -12,10 +14,30 @@ var (
 	lang = flag.String("lang", "cpp", "language")
 )
 
+func write(name, contents string) {
+	file, createErr := os.Create(name)
+
+	if createErr != nil {
+		log.Fatal(createErr)
+	}
+
+	defer file.Close()
+
+	_, writeErr := file.WriteString(contents + "\n")
+
+	if writeErr != nil {
+		log.Fatal(writeErr)
+	}
+}
+
 func main() {
 	flag.Parse()
 
+	// TODO: validate day, part, lang
+	// TODO: make string for each language
+
 	filename := fmt.Sprintf("main.%s", *lang)
-	path := filepath.Join(fmt.Sprintf("%02d", *day), *part, filename)
-	fmt.Println(path)
+	formattedDay := fmt.Sprintf("%02d", *day)
+	path := filepath.Join(formattedDay, *part, filename)
+	write(path, "foo")
 }
