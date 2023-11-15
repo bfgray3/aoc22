@@ -53,7 +53,6 @@ echo $TODO
 )
 
 func languageFromExtension(extension string) (Language, error) {
-
 	switch extension {
 	case "cpp":
 		return Cpp, nil
@@ -88,8 +87,7 @@ func write(name, contents string) {
 func main() {
 	flag.Parse()
 
-	// TODO: validate day, part, lang
-	// TODO: make string for each language
+	// TODO: validate day, part
 
 	filename := fmt.Sprintf("main.%s", *lang)
 	formattedDay := fmt.Sprintf("%02d", *day)
