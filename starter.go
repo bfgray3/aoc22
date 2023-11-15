@@ -92,9 +92,9 @@ func main() {
 	filename := fmt.Sprintf("main.%s", *lang)
 	formattedDay := fmt.Sprintf("%02d", *day)
 	path := filepath.Join(formattedDay, *part, filename)
-	lang, err := languageFromExtension(*lang)
+	language, err := languageFromExtension(*lang)
 	if err != nil {
 		log.Fatal(err)
 	}
-	write(path, string(lang))
+	write(path, string(language))
 }
