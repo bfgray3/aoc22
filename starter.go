@@ -46,8 +46,28 @@ TODO <- readLines(args[1])
 
 cat(TODO, "\n", sep = "")
 `
-	Shell Language = "sh"
+	Shell Language = `#!/usr/bin/env bash
+
+echo $TODO
+`
 )
+
+func languageFromExtension(extension string) (Language, error) {
+
+	switch extension {
+	case "cpp":
+		return Cpp, nil
+	case "go":
+		return Go, nil
+	case "R":
+		return R, nil
+	case "py":
+		return Python, nil
+	case "sh":
+		return Shell, nil
+	}
+	return "", fmt.Errorf("unsupported language %s", extension)
+}
 
 func write(name, contents string) {
 	file, createErr := os.Create(name)
@@ -74,5 +94,9 @@ func main() {
 	filename := fmt.Sprintf("main.%s", *lang)
 	formattedDay := fmt.Sprintf("%02d", *day)
 	path := filepath.Join(formattedDay, *part, filename)
-	write(path, string(Go)) // TODO: figure out the contents to write here
+	lang, err := languageFromExtension(*lang)
+	if err != nil {
+		log.Fatal(err)
+	}
+	write(path, string(lang))
 }
