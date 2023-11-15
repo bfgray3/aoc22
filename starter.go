@@ -3,6 +3,7 @@ package main
 import (
 	"flag"
 	"fmt"
+	"path/filepath"
 )
 
 var (
@@ -14,7 +15,7 @@ var (
 func main() {
 	flag.Parse()
 
-	fmt.Println("day: ", *day)
-	fmt.Println("part: ", *part)
-	fmt.Println("language: ", *lang)
+	filename := fmt.Sprintf("main.%s", *lang)
+	path := filepath.Join(fmt.Sprintf("%02d", *day), *part, filename)
+	fmt.Println(path)
 }
