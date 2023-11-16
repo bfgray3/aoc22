@@ -12,15 +12,7 @@ the image and tests support the following languages:
 
 1. build the image for testing with `make build`.
 2. write solutions in files named `<dd>/{a,b}/main.{sh,cpp,go,py,R}`.
-    1. starter files can be created using `starter.go`. Usage:
-```
-  -day uint
-        day (default 1)
-  -lang string
-        language (default "cpp")
-  -part string
-        part (default "a")
-```
+    1. starter files can be created using `starter.go`. usage is below.
     2. each program/script should output the answer (and only the answer) to stdout.
     3. each program/script should expect exactly one command line argument, which is the file containing the input data.
     4. these are available in the running container via a volume, so the image does not need to be rebuilt after writing a new solution.
@@ -37,3 +29,12 @@ the image and tests support the following languages:
 ### notes
 * test all solutions in the above languages for all days/parts with `make test`.
 * clean up the repo, build the image, and test all solutions with `make all`.
+* `starter.go` usage:
+```
+  -day uint
+        day (default 1)
+  -lang string
+        language (default "cpp")
+  -part string
+        part (default "a")
+```
