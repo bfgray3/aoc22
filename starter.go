@@ -87,7 +87,13 @@ func write(name, contents string) {
 func main() {
 	flag.Parse()
 
-	// TODO: validate day, part
+	if *part != "a" && *part != "b" {
+		log.Fatal("part must be either a or b")
+	}
+
+	if *day < 1 || *day > 25 {
+		log.Fatal("day must be between 1 and 25")
+	}
 
 	filename := fmt.Sprintf("main.%s", *lang)
 	formattedDay := fmt.Sprintf("%02d", *day)
