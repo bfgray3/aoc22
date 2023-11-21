@@ -32,9 +32,9 @@ the image and tests support the following languages:
 * `starter.go` usage:
 ```
   -day uint
-        day (default 1)
+        day {1,...,25} (default 1)
   -lang string
-        language (default "cpp")
+        language {cpp,go,R,py,sh} (default "cpp")
   -part string
-        part (default "a")
+        part {a,b} (default "a")
 ```

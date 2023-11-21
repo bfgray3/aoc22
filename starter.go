@@ -9,9 +9,9 @@ import (
 )
 
 var (
-	day  = flag.Uint("day", 1, "day")
-	part = flag.String("part", "a", "part")
-	lang = flag.String("lang", "cpp", "language")
+	day  = flag.Uint("day", 1, "day {1,...,25}")
+	part = flag.String("part", "a", "part {a,b}")
+	lang = flag.String("lang", "cpp", "language {cpp,go,R,py,sh}")
 )
 
 type Language string
