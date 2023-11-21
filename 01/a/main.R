@@ -9,7 +9,7 @@ for (cal in cals) {
     if (current_elf_cals > max_elf_cals) {
       max_elf_cals <- current_elf_cals
     }
-      current_elf_cals <- 0L
+    current_elf_cals <- 0L
   } else {
     current_elf_cals <- current_elf_cals + as.integer(cal)
   }
