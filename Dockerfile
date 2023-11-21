@@ -9,15 +9,6 @@ RUN : \
   && rm -rf /var/lib/apt/lists/* \
   && :
 
-RUN : \
-  && curl -OL https://golang.org/dl/$GO_TARBALL \
-  && tar -C /usr/local -xvf $GO_TARBALL \
-  && rm $GO_TARBALL \
-  && :
-
-# TODO: cleanup this vs. the one that comes with the base image
-ENV PATH=$PATH:/usr/local/go/bin
-
 WORKDIR aoc
 
 COPY requirements.txt .

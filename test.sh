@@ -43,7 +43,7 @@ function test_one {
       ans=$(python3 "$f" "$input_file")
       ;;
     go)
-      ans=$(/usr/local/go/bin/go run "$f" "$input_file")  # TODO: cleanup which executable
+      ans=$(go run "$f" "$input_file")
       ;;
     sh)
       ans=$(bash "$f" "$input_file")
