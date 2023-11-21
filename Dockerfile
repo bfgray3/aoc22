@@ -1,7 +1,5 @@
 FROM gcc:13.2
 
-ARG GO_TARBALL=go1.21.4.linux-amd64.tar.gz
-
 RUN : \
   && apt-get update \
   && DEBIAN_FRONTEND=noninteractive apt-get install --yes --no-install-recommends jq r-base python3-venv \
