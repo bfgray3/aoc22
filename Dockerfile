@@ -1,6 +1,6 @@
 FROM gcc:13.2
 
-ARG GO_TARBALL=go1.20.5.linux-amd64.tar.gz
+ARG GO_TARBALL=go1.21.4.linux-amd64.tar.gz
 
 RUN : \
   && apt-get update \
