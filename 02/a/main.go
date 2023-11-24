@@ -63,8 +63,8 @@ func main() {
 	for scanner.Scan() {
 		rawText := scanner.Text()
 
-		myMove, myErr := parseMyMove(byte(rawText[len(rawText)-1]))
-		opponentMove, opponentErr := parseOpponentMove(byte(rawText[0]))
+		myMove, myErr := parseMyMove(rawText[len(rawText)-1])
+		opponentMove, opponentErr := parseOpponentMove(rawText[0])
 
 		if myErr != nil || opponentErr != nil {
 			log.Fatal("Error parsing move")
